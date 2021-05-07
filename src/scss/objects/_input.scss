@@ -1,0 +1,12 @@
+@import '../variables/colors';
+
+input {
+    height: 40px;
+    display: block;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid $primary;
+}
+input:focus {
+    outline: none;
+}

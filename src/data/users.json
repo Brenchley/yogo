@@ -1,0 +1,117 @@
+[
+    {
+      "_id": "5fe371350eb48adae5006261",
+      "isActive": true,
+      "picture": "http://placehold.it/32x32",
+      "name": "Alexis Mccarthy",
+      "email": "alexismccarthy@zilidium.com",
+      "password": "{{}}",
+      "registered": "2019-01-03T04:12:42 -03:00",
+      "friends": [
+        {
+          "id": 0,
+          "name": "Conley Wilcox"
+        },
+        {
+          "id": 1,
+          "name": "Charles Fulton"
+        },
+        {
+          "id": 2,
+          "name": "Lucia Roach"
+        }
+      ]
+    },
+    {
+      "_id": "5fe3713559aada394200299b",
+      "isActive": false,
+      "picture": "http://placehold.it/32x32",
+      "name": "Wilder Parrish",
+      "email": "wilderparrish@zilidium.com",
+      "password": "{{}}",
+      "registered": "2014-11-02T06:47:47 -03:00",
+      "friends": [
+        {
+          "id": 0,
+          "name": "Yvonne Allison"
+        },
+        {
+          "id": 1,
+          "name": "Salazar Dudley"
+        },
+        {
+          "id": 2,
+          "name": "Haney Camacho"
+        }
+      ]
+    },
+    {
+      "_id": "5fe3713588677a4011af4991",
+      "isActive": false,
+      "picture": "http://placehold.it/32x32",
+      "name": "Stevenson Mckinney",
+      "email": "stevensonmckinney@zilidium.com",
+      "password": "{{}}",
+      "registered": "2018-08-02T02:24:28 -03:00",
+      "friends": [
+        {
+          "id": 0,
+          "name": "Valdez Cummings"
+        },
+        {
+          "id": 1,
+          "name": "Evangeline Webster"
+        },
+        {
+          "id": 2,
+          "name": "Dollie Randolph"
+        }
+      ]
+    },
+    {
+      "_id": "5fe37135f46854808c6569a3",
+      "isActive": true,
+      "picture": "http://placehold.it/32x32",
+      "name": "Pollard Gibbs",
+      "email": "pollardgibbs@zilidium.com",
+      "password": "{{}}",
+      "registered": "2015-07-24T09:08:56 -03:00",
+      "friends": [
+        {
+          "id": 0,
+          "name": "Welch Valdez"
+        },
+        {
+          "id": 1,
+          "name": "Louella Pearson"
+        },
+        {
+          "id": 2,
+          "name": "Tonia Moran"
+        }
+      ]
+    },
+    {
+      "_id": "5fe371354dc4d24db414eb4b",
+      "isActive": false,
+      "picture": "http://placehold.it/32x32",
+      "name": "Daisy Fowler",
+      "email": "daisyfowler@zilidium.com",
+      "password": "{{}}",
+      "registered": "2019-02-15T01:08:40 -03:00",
+      "friends": [
+        {
+          "id": 0,
+          "name": "Carson Cross"
+        },
+        {
+          "id": 1,
+          "name": "Quinn Stanton"
+        },
+        {
+          "id": 2,
+          "name": "Trina Gallegos"
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,19 @@
+@import "../variables/colors";
+@import "../variables/typography";
+
+.primary-btn{
+    border: 1px solid $primary-button;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: $button-font; 
+    color: #fff; 
+    height: 40px;
+    background-color: $primary-button;
+}
+
+.secondary-btn{
+    border: 1px solid $secondary-button;
+    min-width: 20px; 
+    font-size: $button-font; 
+    color: #fff; 
+}
