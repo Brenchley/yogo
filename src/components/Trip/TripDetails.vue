@@ -165,12 +165,58 @@
                 </div>
               </div>
             </li>
+            <template v-for="attraction in attractions" v-bind:key="attraction">
+              <li>
+                <div class="timeline-badge warning">
+                  <span>3</span>
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-body">
+                    <div
+                      class="timeline-item card mb-3"
+                      style="max-width: 100%;"
+                    >
+                      <div class="row g-0">
+                        <div class="col-4 timeline-img">
+                          <img
+                            src="@/assets/aung-nyi-Te6wiGYQ_WQ-unsplash.jpg"
+                            alt="..."
+                          />
+                        </div>
+                        <div class="col-8">
+                          <div class="card-body">
+                            <h3 class="mb-4">Kitengela Glass House</h3>
+                            <h6 class="mb-1 float-right text-primary">
+                              2hrs 30mins
+                            </h6>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="timeline-actions d-flex justify-content-end">
+                    <span class="mr-3">
+                      <img src="@/assets/icons/wall-clock.png" width="15" />
+                    </span>
+                    <span class="mr-3">
+                      <img src="@/assets/icons/hourglass.png" width="15" />
+                    </span>
+                    <span class="mr-3">
+                      <img src="@/assets/icons/dollar.png" width="15" />
+                    </span>
+                  </div>
+                </div>
+              </li>
+            </template>
             <li>
               <div class="timeline-badge warning">
                 <!-- <span>3</span> -->
               </div>
               <div class="timeline-panel">
-                <div class="my-3 new-attraction text-center">
+                <div
+                  class="my-3 new-attraction text-center"
+                  @click="addAttraction"
+                >
                   <h3 class="my-4">+ Add new attraction</h3>
                 </div>
               </div>
@@ -179,30 +225,47 @@
         </div>
       </div>
     </div>
-    <swipeable-bottom-sheet ref="swipeableBottomSheet">
-      <h1>Lorem Ipsum</h1>
-      <h2>What is Lorem Ipsum?</h2>
-      <p>
-        <strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </p>
-    </swipeable-bottom-sheet>
   </div>
 </template>
 <script>
-import { SwipeableBottomSheet } from "vue-swipeable-bottom-sheet";
 export default {
-  components: {SwipeableBottomSheet},
+  components: {},
   props: {
     msg: String
   },
   data() {
     return {
+      days: [
+        {
+          day: "",
+          date: ""
+        }
+      ],
+      attractions: [
+        {
+          attraction: "",
+          img: "",
+          time: "",
+          duration: "",
+          cost: ""
+        }
+      ],
       longText:
         "Kakamega Forest is a tropical rainforest situated in the Kakamega and Nandi County of Kenya, northwest of the capital Nairobi, and near to the border with Uganda. It is Kenya's only tropical rainforest and is said to be Kenya's last remnant of the ancient Guineo-Congolian rainforest that once spanned the continent",
       readMoreActivated: false
     };
   },
-  methods: {}
+  methods: {
+    addAttraction() {
+      this.attractions.push({
+        attraction: "",
+        img: "",
+        time: "",
+        duration: "",
+        cost: ""
+      });
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

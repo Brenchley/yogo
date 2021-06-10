@@ -2,14 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <form>
+        <form @submit.prevent="submit">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input
               type="email"
               class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              v-model.trim="form.email"
+              required
             />
             <small id="emailHelp" class="d-none form-text text-muted"
               >We'll never share your email with anyone else.</small
@@ -20,14 +20,16 @@
             <input
               type="password"
               class="form-control"
-              id="exampleInputPassword1"
+              v-model.trim="form.password"
+              required
             />
           </div>
-          <router-link :to="{ name: 'discover' }"
-            ><button type="submit" class="mt-4 btn btn-block btn-primary">
-              SIGN IN
-            </button></router-link
+          <button
+            type="submit"
+            class="mt-4 btn btn-block btn-primary text-uppercase"
           >
+            {{ signinTxt }}
+          </button>
 
           <div class="col-12 text-center mt-3">
             <p class="font-weight-bold text-muted mb-1" style="font-size:12px;">
@@ -51,9 +53,50 @@
 <script>
 // @ is an alias to /src
 
+import formMixin from "@/mixins/form_mixin";
+// import Token from "@/form/Token";
+
 export default {
-  name: "Home",
-  components: {}
+  name: "LoginForm",
+  components: {},
+  mixins: [formMixin],
+  data() {
+    return {
+      loading: false,
+      form: {
+        email: "",
+        password: ""
+      }
+    };
+  },
+  computed: {
+    signinTxt() {
+      return this.loading ? "Signing In..." : "Sign In";
+    }
+  },
+  methods: {
+    submit() {
+      if (this.loading) return;
+      this.loading = true;
+
+      if (this.form.email === "user@gmail.com") {
+        this.redirectToDashboard();
+      } else {
+        this.loading = false;
+      }
+    },
+    redirectToDashboard() {
+      let next = "app/discover";
+
+      window.location.href = next;
+    }
+  },
+  created() {
+    // let token = Token.retreveToken();
+    // if(token.isAuthenticated){
+    //   this.redirectToDashboard();
+    // }
+  }
 };
 </script>
 <style lang="scss" scoped>

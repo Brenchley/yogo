@@ -28,12 +28,6 @@
           </svg>
         </div>
       </div>
-      <div class="stories">
-        <section class="user">
-          <article class="story" style="background:url('https://picsum.photos/480/840');"></article>
-          <article class="story" style="background:url('https://picsum.photos/480/841')"></article>
-        </section>
-      </div>
       <div class="cardy ml-sm-1 mr-sm-1 ml-2 mr-3">
         <img
           src="@/assets/anna-pelzer-IGfIGP5ONV0-unsplash.jpg"
@@ -107,7 +101,7 @@ export default {
     white-space: normal;
     margin: 0 1px;
     vertical-align: top;
-    width: 20%;
+    width: auto;
     & img {
       padding: 2px;
       border: 2px solid #5e12f8;
