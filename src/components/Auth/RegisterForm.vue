@@ -57,7 +57,8 @@ export default {
         email: "",
         username: "",
         password: ""
-      }
+      },
+      registerResponse: {}
     };
   },
   computed: {
@@ -71,7 +72,20 @@ export default {
       this.loading = true;
 
       if (this.form.email !== "") {
-        this.redirectToDashboard();
+        this.axios
+          .post("http://localhost:8181/api/users/create", this.form)
+          .then(({ data }) => {
+            this.loading = false;
+            this.registerResponse = data;
+          })
+          .catch(({ response: { data, status } }) => {
+            if (status == 400) {
+              this.errors = data;
+            }
+            this.loading = false;
+          });
+        console.log(JSON.stringify(this.form));
+        // this.redirectToDashboard();
       } else {
         this.loading = false;
       }
