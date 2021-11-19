@@ -24,6 +24,7 @@
               required
             />
           </div>
+          <p class="mt-2 text-danger" v-if="errors.length > 0">{{ errors }}</p>
           <button
             type="submit"
             class="mt-4 btn btn-block btn-primary text-uppercase"
@@ -76,6 +77,7 @@ export default {
   },
   methods: {
     submit() {
+      this.errors = "";
       if (this.loading) return;
       this.loading = true;
 
@@ -83,6 +85,7 @@ export default {
         this.redirectToDashboard();
       } else {
         this.loading = false;
+        this.errors = "Invalid Cridentials";
       }
     },
     redirectToDashboard() {

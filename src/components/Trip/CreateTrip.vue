@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="mt-4 container">
-        <form class="container">
+        <form class="container" @submit.prevent="createTrip">
           <div class="form-group row d-flex align-items-center borderBottom">
             <label
               for="colFormLabelSm"
@@ -75,10 +75,12 @@
             ></label>
             <div class="pl-1 col-11">
               <input
-                type="text"
-                class="form-control form-control"
+                type="date"
+                class="form-control"
                 id="colFormLabelSm"
                 placeholder="Dates"
+                v-model="form.tripDate"
+                required
               />
             </div>
           </div>
@@ -103,10 +105,12 @@
             ></label>
             <div class="pl-1 col-11">
               <input
-                type="text"
-                class="form-control form-control"
+                type="number"
+                class="form-control"
                 id="colFormLabelSm"
                 placeholder="Budget per day per person"
+                v-model.trim="form.budgetPerPerson"
+                required
               />
             </div>
           </div>
@@ -130,12 +134,14 @@
                 /></svg
             ></label>
             <div class="pl-1 col-11">
-              <input
-                type="text"
-                class="form-control form-control"
-                id="colFormLabelSm"
-                placeholder="Choose your interest"
-              />
+              <select
+                class="form-control"
+                placeholder="Interests"
+                v-model="form.tripInterests"
+                required
+              >
+                <option>Gliding</option>
+              </select>
             </div>
           </div>
           <div
@@ -144,31 +150,60 @@
             <div class="col-12">
               <input
                 type="text"
-                class="form-control form-control"
+                class="form-control"
                 id="colFormLabelSm"
                 placeholder="Trip Name"
+                v-model="form.tripName"
+                required
               />
             </div>
           </div>
-          <div class="col-12 mt-4">
+          <div class="mt-4">
             <p>Travel with?</p>
-            <div class="row">
-              <div class="col-6">
-                <button class="btn btn-lg btn-primary w-100">Solo</button>
+            <div class="flex-row d-flex justify-content-between">
+              <div class="form-check form-check-inline col-6 pl-0">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio1"
+                  value="option1"
+                  v-model="form.tripType"
+                />
+                <label
+                  class="form-check-label text-center w-100"
+                  for="inlineRadio1"
+                  >Solo</label
+                >
               </div>
-              <div class="col-6">
-                <button class="btn btn-lg btn-primary w-100">Party</button>
+              <div class="form-check form-check-inline col-6 pr-0">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio2"
+                  value="option2"
+                  v-model="form.tripType"
+                  disabled
+                />
+                <label
+                  class="form-check-label text-center w-100"
+                  for="inlineRadio2"
+                  >Group</label
+                >
               </div>
             </div>
           </div>
-          <router-link :to="{ name: 'myTrips' }"
-            ><button
+          <div class="row">
+            <!-- <router-link :to="{ name: 'myTrips' }"> -->
+            <button
               type="submit"
               class="mt-4 mb-4 btn btn-lg btn-primary w-100"
             >
-              START MY TRIP
-            </button></router-link
-          >
+              {{ createTxt }}
+            </button>
+            <!-- </router-link> -->
+          </div>
         </form>
       </div>
     </div>
@@ -184,10 +219,37 @@ export default {
     return {
       longText:
         "Kakamega Forest is a tropical rainforest situated in the Kakamega and Nandi County of Kenya, northwest of the capital Nairobi, and near to the border with Uganda. It is Kenya's only tropical rainforest and is said to be Kenya's last remnant of the ancient Guineo-Congolian rainforest that once spanned the continent",
-      readMoreActivated: false
+      readMoreActivated: false,
+      loading: false,
+      form: {
+        tripDate: "",
+        budgetPerPerson: "",
+        tripInterests: [],
+        tripName: "",
+        tripType: ""
+      }
     };
   },
-  methods: {}
+  computed: {
+    createTxt() {
+      return this.loading ? "Creating Trip..." : "START MY TRIP";
+    }
+  },
+  methods: {
+    createTrip() {
+      if (this.loading) return;
+      this.loading = true;
+      console.log(this.form);
+      window.setTimeout(() => {
+        this.redirectToMyTrips();
+      }, 2000);
+    },
+    redirectToMyTrips() {
+      let next = "/app/trip/mine";
+
+      window.location.href = next;
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -218,8 +280,9 @@ a {
 a {
   text-decoration: none;
 }
-input {
-  height: 28px;
+input,
+select {
+  height: 35px;
   display: block;
   border: none;
   border-radius: 0;
@@ -251,5 +314,29 @@ label {
 .borderBottom {
   border-bottom: 1.5px solid #ccc;
   padding-bottom: 10px;
+}
+
+.form-check input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+.form-check label {
+  display: inline-block;
+  background-color: #fff;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  color: #0037cf;
+  font-size: 14px;
+  border: 2px solid #0037cf;
+  border-radius: 0.3rem;
+}
+.form-check input[type="radio"]:checked + label {
+  background-color: #0037cf;
+  border-color: #0037cf;
+  color: #fff;
+}
+.form-check input[type="radio"]:focus + label {
+  border: 2px dashed #444;
 }
 </style>
